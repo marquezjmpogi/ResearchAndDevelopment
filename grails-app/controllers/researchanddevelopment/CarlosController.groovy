@@ -1,18 +1,19 @@
 package researchanddevelopment
 
 class CarlosController {
-
+    def newServiceCarlosService
+    
     def index() { }
     
-    def authenticatePassword(String password, Integer userId){
-        Boolean pwdOk = true
-        def passkey = md5(UserMaster.get(userId).userName)
-        // password is md5 string
-        def myPwd = md5(passkey + UserMaster.get(userId).password)
-        if (password != myPwd){
-            pwdOk = false    
+    def login(){
+        println params
+        def pwdOk = true
+        pwdOk = newServiceCarlosService.authenticate(params.password, params.userId)
+        if (pwdOk != true){
+            return 'ErrorLogin'
         }
-        return pwdOk
+        
     }
+
     
 }
